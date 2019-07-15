@@ -13,8 +13,8 @@ public class FuelController {
     private FuelRepository fuelRepository;
 
     @PutMapping("fillup")
-    public void fillup(String regNumber, int currentMileage, double litresFilled, double cost) {
-        fuelRepository.insertNewFillUp(regNumber, currentMileage, litresFilled, cost);
+    public void fillup(int ownedVehicleId, int currentMileage, double litresFilled, double cost) {
+        fuelRepository.insertNewFillUp(ownedVehicleId, currentMileage, litresFilled, cost);
     }
 
 }

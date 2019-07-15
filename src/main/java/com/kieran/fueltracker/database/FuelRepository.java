@@ -13,7 +13,7 @@ public interface FuelRepository extends JpaRepository<FillUp, String> {
 
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO fillups (registration, mileage, litres_filled, cost) VALUES (:registration, :mileage, :litresFilled, :cost)", nativeQuery = true)
-    void insertNewFillUp(String registration, int mileage, double litresFilled, double cost);
+    @Query(value = "INSERT INTO fillups (owned_vehicle, mileage, litres_filled, cost) VALUES (:ownedVehicleId, :mileage, :litresFilled, :cost)", nativeQuery = true)
+    void insertNewFillUp(int ownedVehicleId, int mileage, double litresFilled, double cost);
 
 }
