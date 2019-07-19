@@ -3,10 +3,7 @@ package com.kieran.fueltracker.controller;
 import com.kieran.fueltracker.model.OwnedVehicle;
 import com.kieran.fueltracker.model.Vehicle;
 import com.kieran.fueltracker.service.VehicleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,11 +16,16 @@ public class VehicleController {
 
     @GetMapping("{id}")
     public Vehicle getVehicle(@PathVariable("id") int id) {
-        return vehicleService.getVehicle(id);
+        return vehicleService.getVehicle(id).get();
     }
 
     @GetMapping("owned/{id}")
     public OwnedVehicle getOwnedVehicle(@PathVariable("id") int id) {
         return vehicleService.getOwnedVehicle(id);
+    }
+
+    @PostMapping("")
+    public void getOwnedVehicle(@RequestBody Vehicle vehicle) {
+        vehicleService.createVehicle(vehicle);
     }
 }

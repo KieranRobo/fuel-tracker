@@ -7,6 +7,7 @@ import com.kieran.fueltracker.model.Vehicle;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 @Service
 public class VehicleService {
@@ -17,12 +18,16 @@ public class VehicleService {
     @Resource
     private OwnedVehiclesRepository ownedVehicleRepository;
 
-    public Vehicle getVehicle(int id) {
-        return vehicleRepository.getVehicleById(id);
+    public Optional<Vehicle> getVehicle(int id) {
+        return vehicleRepository.findById(id);
     }
 
     public OwnedVehicle getOwnedVehicle(int id) {
         return ownedVehicleRepository.getOwnedVehicleById(id);
+    }
+
+    public void createVehicle(Vehicle vehicle) {
+        vehicleRepository.save(vehicle);
     }
 
 }
