@@ -1,6 +1,7 @@
 package com.kieran.fueltracker.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,15 +17,19 @@ public class Vehicle {
     @Column(name="id")
     private int id;
 
+    @JsonProperty("brand")
     @Column(name="brand")
     private String brand;
 
+    @JsonProperty("model")
     @Column(name="model")
     private String model;
 
+    @JsonProperty("year")
     @Column(name="year")
     private String year;
 
+    @JsonProperty("engine_size")
     @Column(name="engine_size")
     private int engineSize;
 

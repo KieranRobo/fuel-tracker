@@ -1,6 +1,6 @@
 package com.kieran.fueltracker.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 
@@ -13,13 +13,15 @@ public class OwnedVehicle {
     @Id
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name="vehicle")
-    private Vehicle vehicle;
+    @JsonProperty("vehicle_id")
+    @Column(name="vehicle")
+    private int vehicleId;
 
+    @JsonProperty("registration")
     @Column(name="registration")
     private String registration;
 
+    @JsonProperty("owner")
     @Column(name="owner")
     private int owner;
 
@@ -31,12 +33,12 @@ public class OwnedVehicle {
         this.id = id;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public int getVehicleId() {
+        return vehicleId;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
     }
 
     public String getRegistration() {
@@ -54,4 +56,5 @@ public class OwnedVehicle {
     public void setOwner(int owner) {
         this.owner = owner;
     }
+
 }

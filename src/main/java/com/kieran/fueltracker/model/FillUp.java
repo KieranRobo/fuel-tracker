@@ -1,25 +1,34 @@
 package com.kieran.fueltracker.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="fillups")
 public class FillUp {
 
     @JsonIgnore
+    @Column(name="id")
     @Id
     private int id;
 
+    @JsonProperty("owned_vehicle")
     @ManyToOne
+    @JoinColumn(name="owned_vehicle")
     private OwnedVehicle ownedVehicle;
 
+    @JsonProperty("mileage")
+    @Column(name="mileage")
     private int mileage;
+
+    @JsonProperty("litres_filled")
+    @Column(name="litres_filled")
     private double litresFilled;
+
+    @JsonProperty("cost")
+    @Column(name="cost")
     private double cost;
 
     public int getId() {
