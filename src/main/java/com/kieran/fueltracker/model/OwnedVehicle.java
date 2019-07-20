@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class OwnedVehicle {
 
     @JsonIgnore
+    @Column(name="id")
     @Id
     private int id;
 
@@ -16,7 +17,10 @@ public class OwnedVehicle {
     @JoinColumn(name="vehicle")
     private Vehicle vehicle;
 
+    @Column(name="registration")
     private String registration;
+
+    @Column(name="owner")
     private int owner;
 
     public int getId() {

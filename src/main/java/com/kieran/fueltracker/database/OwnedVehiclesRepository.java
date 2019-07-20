@@ -2,11 +2,9 @@ package com.kieran.fueltracker.database;
 
 import com.kieran.fueltracker.model.OwnedVehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-public interface OwnedVehiclesRepository extends JpaRepository<OwnedVehicle, Long> {
-
-    @Query(value = "SELECT ov FROM OwnedVehicle ov WHERE ov.id = :id")
-    OwnedVehicle getOwnedVehicleById(int id);
+@Repository("ownedVehicleRepository")
+public interface OwnedVehiclesRepository extends JpaRepository<OwnedVehicle, Integer> {
 
 }
