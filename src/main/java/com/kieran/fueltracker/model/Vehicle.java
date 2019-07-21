@@ -1,20 +1,20 @@
 package com.kieran.fueltracker.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name="vehicles")
+@NoArgsConstructor
 public class Vehicle {
 
-    @JsonIgnore
-    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
+    @Id
     private int id;
 
     @JsonProperty("brand")
@@ -33,43 +33,10 @@ public class Vehicle {
     @Column(name="engine_size")
     private int engineSize;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
+    public Vehicle(String brand, String model, String year, int engineSize) {
         this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
         this.model = model;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
         this.year = year;
-    }
-
-    public int getEngineSize() {
-        return engineSize;
-    }
-
-    public void setEngineSize(int engineSize) {
         this.engineSize = engineSize;
     }
 }

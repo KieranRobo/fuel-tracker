@@ -1,8 +1,10 @@
 package com.kieran.fueltracker.controller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kieran.fueltracker.Exceptions.VehicleDoesNotExistException;
 import com.kieran.fueltracker.model.Vehicle;
 import com.kieran.fueltracker.service.VehicleService;
+import lombok.Data;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -31,7 +33,22 @@ public class VehicleController {
     }
 
     @PostMapping
-    public void newVehicle(@RequestBody Vehicle vehicle) {
-        vehicleService.createVehicle(vehicle);
+    public void newOwnedVehicle(@RequestBody VehiclePost v) {
+        vehicleService.createVehicle(v.brand, v.model, v.year, v.engineSize);
+    }
+
+    @Data
+    private static class VehiclePost {
+        @JsonProperty("brand")
+        private String brand;
+
+        @JsonProperty("model")
+        private String model;
+
+        @JsonProperty("year")
+        private String year;
+
+        @JsonProperty("engine_size")
+        private int engineSize;
     }
 }

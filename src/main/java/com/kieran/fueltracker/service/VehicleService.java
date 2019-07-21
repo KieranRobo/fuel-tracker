@@ -35,12 +35,14 @@ public class VehicleService {
         return ownedVehicleRepository.findById(id);
     }
 
-    public void createVehicle(Vehicle vehicle) {
+    public void createVehicle(String brand, String model, String year, int engineSize) {
+        Vehicle vehicle = new Vehicle(brand, model, year, engineSize);
         vehicleRepository.save(vehicle);
     }
 
-    public void createOwnedVehicle(OwnedVehicle vehicle) {
-        ownedVehicleRepository.save(vehicle);
+    public void createOwnedVehicle(String registration, Vehicle vehicle, int owner) {
+        OwnedVehicle ownedVehicle = new OwnedVehicle(vehicle, registration, owner);
+        ownedVehicleRepository.save(ownedVehicle);
     }
 
 }

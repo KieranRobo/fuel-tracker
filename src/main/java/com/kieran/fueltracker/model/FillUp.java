@@ -1,15 +1,18 @@
 package com.kieran.fueltracker.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name="fillups")
+@NoArgsConstructor
 public class FillUp {
 
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     @Id
     private int id;
@@ -31,43 +34,10 @@ public class FillUp {
     @Column(name="cost")
     private double cost;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public OwnedVehicle getOwnedVehicle() {
-        return ownedVehicle;
-    }
-
-    public void setOwnedVehicle(OwnedVehicle ownedVehicle) {
+    public FillUp(OwnedVehicle ownedVehicle, int mileage, double litresFilled, double cost) {
         this.ownedVehicle = ownedVehicle;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
         this.mileage = mileage;
-    }
-
-    public double getLitresFilled() {
-        return litresFilled;
-    }
-
-    public void setLitresFilled(double litresFilled) {
         this.litresFilled = litresFilled;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public void setCost(double cost) {
         this.cost = cost;
     }
 }

@@ -1,21 +1,26 @@
 package com.kieran.fueltracker.model;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name="owned_vehicles")
+@NoArgsConstructor
 public class OwnedVehicle {
 
-    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     @Id
     private int id;
 
-    @JsonProperty("vehicle_id")
-    @Column(name="vehicle")
-    private int vehicleId;
+    @JsonProperty("vehicle")
+    @ManyToOne
+    @JoinColumn(name="vehicle")
+    private Vehicle vehicle;
 
     @JsonProperty("registration")
     @Column(name="registration")
@@ -25,35 +30,9 @@ public class OwnedVehicle {
     @Column(name="owner")
     private int owner;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public String getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(String registration) {
+    public OwnedVehicle(Vehicle vehicle, String registration, int owner) {
+        this.vehicle = vehicle;
         this.registration = registration;
-    }
-
-    public int getOwner() {
-        return owner;
-    }
-
-    public void setOwner(int owner) {
         this.owner = owner;
     }
 
