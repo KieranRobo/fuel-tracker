@@ -1,7 +1,7 @@
 package com.kieran.fueltracker.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kieran.fueltracker.Exceptions.VehicleDoesNotExistException;
+import com.kieran.fueltracker.exceptions.VehicleDoesNotExistException;
 import com.kieran.fueltracker.model.Vehicle;
 import com.kieran.fueltracker.service.VehicleService;
 import lombok.Data;
