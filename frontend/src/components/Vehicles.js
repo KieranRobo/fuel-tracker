@@ -8,7 +8,7 @@ import VehicleList from "./vehicles/VehicleList"
 class Vehicles extends React.Component {
 
     state = {
-        vehicles: []
+        vehicles: null
     };
 
     componentDidMount() {
@@ -30,6 +30,7 @@ class Vehicles extends React.Component {
     
 
     render() {
+        
         return (
             <VehicleList vehicles={this.state.vehicles} />
         );

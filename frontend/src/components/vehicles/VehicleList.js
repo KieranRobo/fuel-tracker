@@ -1,6 +1,11 @@
 import React from 'react';
 
 const VehicleList = props => {
+    if (!props.vehicles) {
+        return (
+            <div>Loading...</div>
+        )
+    }
     return (
         <table>
         <tbody>
@@ -11,7 +16,7 @@ const VehicleList = props => {
             {
                 props.vehicles.map(vehicle => {
                     return (
-                        <tr>
+                        <tr key={vehicle.id}>
                             <td>{vehicle.brand}</td>
                             <td>{vehicle.model}</td>    
                         </tr>
