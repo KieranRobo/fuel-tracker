@@ -2,7 +2,8 @@ import React from 'react';
 import FillUp from './FillUp'
 import Home from './Home'
 import { Route, Switch, Link } from 'react-router-dom';
-import Vehicles from './Vehicles';
+import OwnedVehicles from './OwnedVehicles';
+import FuelView from './FuelView';
 
 
 
@@ -16,7 +17,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/fillup" component={FillUp} />
-          <Route path="/vehicles" component={Vehicles} />
+          <Route path="/vehicles" component={OwnedVehicles} />
+          <Route exact path="/fuel/:vehicle" component={FuelView} />
         </Switch>
         
         

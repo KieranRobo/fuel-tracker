@@ -7,11 +7,21 @@ const requests = {
       axios.get(`${API_ROOT}${url}`)
 };
 
-const Vehicles = {
+const OwnedVehicles = {
     all: () =>
-      requests.get('/vehicles')
+      requests.get(`/owned-vehicles`),
+    details: (id) =>
+      requests.get(`/owned-vehicles/${id}`)
+};
+
+const Vehicles = {
+  all: () =>
+    requests.get(`/vehicles`),
+  details: id =>
+    requests.get(`/vehicles/${id}`)
 };
 
 export default {
-    Vehicles
+    Vehicles,
+    OwnedVehicles
 };

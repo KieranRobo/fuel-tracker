@@ -1,7 +1,7 @@
 import React from 'react';
 
 import axios from "../api.service";
-import VehicleList from "./vehicles/VehicleList"
+import OwnedVehicleList from "./vehicles/OwnedVehicleList"
 
 
 
@@ -12,14 +12,13 @@ class Vehicles extends React.Component {
     };
 
     componentDidMount() {
-        axios.Vehicles.all()
+        axios.OwnedVehicles.all()
         .then(response => {
             const newState = Object.assign({}, this.state, {
                 vehicles: response.data
         });
 
         this.setState(newState);
-        console.log("data: "+ this.state.vehicles[0].brand);
         });
         
     }   
@@ -32,7 +31,7 @@ class Vehicles extends React.Component {
     render() {
         
         return (
-            <VehicleList vehicles={this.state.vehicles} />
+            <OwnedVehicleList vehicles={this.state.vehicles} />
         );
     }
 }
