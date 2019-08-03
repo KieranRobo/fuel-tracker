@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
-import FuelView from '../FuelView';
+import { Link } from 'react-router-dom';
 
 const VehicleList = props => {
     if (!props.vehicles) {

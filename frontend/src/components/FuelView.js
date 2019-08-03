@@ -1,12 +1,13 @@
 import React from 'react';
-import OwnedVehicleDetails from './vehicles/OwnedVehicleDetails';
+import VehicleDetails from './vehicles/VehicleDetails';
+import { Link } from 'react-router-dom';
 import axios from "../api.service";
 
 
 class FuelView extends React.Component {
 
     state = {
-        ownedVehicle: null
+        ownedVehicle: {vehicle: null}
     };
 
     componentDidMount() {
@@ -26,8 +27,12 @@ class FuelView extends React.Component {
     render() {
         return (
             <div>
-                <h2>Fuel View</h2>
-                <OwnedVehicleDetails ownedVehicle={this.state.ownedVehicle} />
+                <h1>Fuel View</h1>
+                <Link to={`/fuel/${this.state.ownedVehicle.id}/fill-up`}>Fill Up</Link>
+                <h3>This Vehicle</h3>
+                <VehicleDetails vehicle={this.state.ownedVehicle.vehicle} />
+                <h3>Fuel Economy</h3>
+                <div>Coming Soon...</div>
             </div>
 
         );
