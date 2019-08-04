@@ -13,8 +13,10 @@ class FillUp extends React.Component {
             ownedVehicle: { vehicle : null },
             currentMileage: '',
             litres: '',
-            cost: ''
+            cost: '',
+            submitted: false
         };
+
 
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -29,8 +31,8 @@ class FillUp extends React.Component {
     costChange(event) { this.setState({ cost: event.target.value }) }
 
     handleSubmit(event) {
-        console.log(this.state.cost);
         event.preventDefault();
+        this.setState({ submitted: true })
     }
 
     componentDidMount() {
@@ -52,6 +54,11 @@ class FillUp extends React.Component {
         if (this.state.ownedVehicle.vehicle == null) {
             return (
                 <div>Loading...</div>
+            )
+        }
+        if (this.state.submitted) {
+            return (
+                <div>submitted</div>
             )
         }
         return (
